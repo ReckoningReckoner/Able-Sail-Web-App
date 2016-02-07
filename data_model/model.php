@@ -33,6 +33,8 @@ class Database_Reader
       return $data->fetch();
    }
    
+   /* returns 1 if a given user has a proper username and password
+   combination. Otherwise, returns 0*/
    public function valid_user($username, $pw)
    {
       $users = $this->dbh->query("SELECT `password` FROM `user` 
@@ -55,6 +57,7 @@ class Database_Reader
       }
    }
    
+   /*adds a new user*/
    public function new_user($username, $email, $password)
    {
       try{
@@ -75,6 +78,7 @@ class Database_Reader
       }
    }
    
+   /* deletes a user*/
    public function delete_user($username)
    {
       try{
@@ -84,6 +88,7 @@ class Database_Reader
       }
    }
    
+   /* changes the email in the user database*/
    public function change_email($username, $new_email)
    {
       $this->dbh->query(
